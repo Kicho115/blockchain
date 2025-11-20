@@ -10,5 +10,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(OpenSSL REQUIRED)
 
-add_executable(blockchain main.cpp)
+include_directories(src)
+
+file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.h")
+
+add_executable(blockchain ${SOURCES})
 target_link_libraries(blockchain PRIVATE OpenSSL::SSL OpenSSL::Crypto)
